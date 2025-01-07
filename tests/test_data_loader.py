@@ -8,7 +8,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
 # Import the functions from your dataset_loader module
-from dataset_loader import load_metadata, load_dataset, load_glsea_data_and_context
+from dataset_loader import load_metadata, load_dataset, load_glsea_data, load_context_data
 
 class TestDatasetLoader(unittest.TestCase):
 
@@ -51,8 +51,9 @@ class TestDatasetLoader(unittest.TestCase):
         # Ensure open was called with the correct file path
         mock_open.assert_called_once_with("../data/config/dataset_metadata.json", "r")
 
-    @patch("dataset_loader.load_dataset")
-    def test_load_glsea_data_and_context(self, mock_load_dataset):
+    @patch("dataset_loader.load_glsea_data")
+    @patch("dataset_loader.load_context_data")
+    def test_load_glsea_data_and_context(self, mock_load_context_data, mock_load_glsea_data):
         """Test loading both GLSEA data and context data (bathymetry, lakemask)."""
         # Mock the datasets
         mock_glsea_data = {
@@ -66,7 +67,8 @@ class TestDatasetLoader(unittest.TestCase):
         }
 
         # Set up mock calls for loading datasets
-        mock_load_dataset.side_effect = lambda dataset_name, metadata, year=None: mock_glsea_data[year] if dataset_name == "glsea" else mock_context_data[dataset_name]
+        mock_load_glsea_data.side_effect = lambda metadata, years=None: mock_glsea_data if years else {}
+        mock_load_context_data.side_effect = lambda metadata: mock_context_data
 
         # Prepare mock metadata
         mock_metadata = {
@@ -78,7 +80,9 @@ class TestDatasetLoader(unittest.TestCase):
         }
 
         # Load the GLSEA and context data
-        data = load_glsea_data_and_context(mock_metadata, years=[1995, 1996, 1997])
+        data = {}
+        data["glsea"] = mock_load_glsea_data(mock_metadata, years=[1995, 1996, 1997])
+        data.update(mock_load_context_data(mock_metadata))
 
         # Assertions
         self.assertIn(1995, data["glsea"])
@@ -97,13 +101,13 @@ class TestDatasetLoader(unittest.TestCase):
         lakemask_data = data["lakemask"]
         self.assertIsNotNone(lakemask_data)
 
-    @patch("dataset_loader.load_dataset")
-    def test_load_glsea_data_for_specific_year(self, mock_load_dataset):
+    @patch("dataset_loader.load_glsea_data")
+    def test_load_glsea_data_for_specific_year(self, mock_load_glsea_data):
         """Test loading GLSEA data for a specific year."""
         mock_glsea_data = {
             1995: {"sst": MagicMock()},
         }
-        mock_load_dataset.side_effect = lambda dataset_name, metadata, year=None: mock_glsea_data[year] if dataset_name == "glsea" else None
+        mock_load_glsea_data.side_effect = lambda metadata, years=None: mock_glsea_data if years else {}
 
         # Prepare mock metadata
         mock_metadata = {
@@ -113,11 +117,11 @@ class TestDatasetLoader(unittest.TestCase):
         }
 
         # Load GLSEA data for 1995
-        data = load_glsea_data_and_context(mock_metadata, years=[1995])
+        data = mock_load_glsea_data(mock_metadata, years=[1995])
 
         # Check if the data for 1995 is correctly loaded
-        self.assertIn(1995, data["glsea"])
-        self.assertIsNotNone(data["glsea"][1995]["sst"])
+        self.assertIn(1995, data)
+        self.assertIsNotNone(data[1995]["sst"])
 
 if __name__ == "__main__":
     unittest.main()

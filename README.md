@@ -67,49 +67,47 @@ To build the Docker image for DeepSensor-GreatLakes:
 docker build -t my-deepsensor-app .
 ```
 
-- The `-t` flag names the image (`my-deepsensor-app`).
-- This process installs dependencies from the `requirements.txt` file and prepares the environment for running the app.
+* The `-t` flag names the image (`my-deepsensor-app`).
+& This process installs dependencies from the `requirements.txt` file and prepares the environment for running the app.
 
 #### **2. Run the Docker Container**
 
 To run the container and expose necessary ports (e.g., Jupyter Notebook):
 
 ```bash
-docker run -it -p 8888:8888 my-deepsensor-app
+docker run -p 8888:8888 -v $(pwd):/app deepsensor-greatlakes
 ```
 
-- `-it` allows interactive terminal use.
-- `-p 8888:8888` maps port 8888 in the container to port 8888 on your local machine, which is required for accessing Jupyter Notebook.
+* `-it` allows interactive terminal use.
+* `-p 8888:8888` maps port 8888 in the container to port 8888 on your local machine, which is required for accessing Jupyter Notebook.
+* The `-v $(pwd):/app` flag mounts your current directory, allowing you to save your work persistently and edit files on your local machine.
 
-#### **3. Start Jupyter Notebook**
+#### **3. Accessing Jupyter**
 
-Once inside the container, start the Jupyter Notebook server:
+When you run the container, it will automatically start Jupyter and print a URL with a token, looking something like this:
 
-```bash
-jupyter notebook --ip=0.0.0.0 --allow-root
+```html
+http://127.0.0.1:8888/?token=<your-token>
 ```
 
-- `--ip=0.0.0.0` makes the server accessible from all IP addresses. 
-- `--allow-root` grants the necessary permissions to run Jupyter as the root user in the container.
+Simply copy this URL into your browser to access Jupyter.
 
-#### **4. Access Jupyter Notebook**
+#### **4. Additional Notes**
+* The environment includes all necessary dependencies from `requirements.txt`.
+* You can use the environment for model training, data exploration, and notebook-based workflows.
+* Docker ensures consistency across different systems (e.g., local machines, cloud, HPC).
 
-In your browser, open the following URL:
+#### Troubleshooting
 
-```
-http://127.0.0.1:8888/tree?token=<your-token>
-```
+If you can't access Jupyter, check:
+* The port mapping is correct (8888:8888)
+* You're using the correct token from the console output
+* Your browser can access localhost/127.0.0.1
 
-Replace `<your-token>` with the token provided in the terminal after running Jupyter. For convenience, you can disable the token requirement (recommended only for local, secure environments) by running Jupyter with:
-
-```bash
-jupyter notebook --ip=0.0.0.0 --allow-root --NotebookApp.token=''
-```
-
-#### **5. Additional Notes**
-- The Docker image includes all necessary dependencies to work with Great Lakes data in DeepSensor.
-- You can use the environment for model training, data exploration, and notebook-based workflows.
-- Docker ensures consistency across different systems (e.g., local machines, cloud, HPC).
+#### Additional Notes
+* The Docker image includes all necessary dependencies for working with Great Lakes data in DeepSensor
+* The environment is suitable for model training, data exploration, and notebook-based workflows
+* Docker ensures consistency across different systems (local machines, cloud, HPC)
 
 ---
 

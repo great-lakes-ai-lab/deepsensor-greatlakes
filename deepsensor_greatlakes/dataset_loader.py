@@ -4,18 +4,26 @@ Module for loading datasets from GCP and other sources, particularly in Zarr or 
 Functions:
     load_metadata(metadata_path): Load dataset metadata from a JSON file.
     load_dataset(dataset_name, metadata, year=None): Load a dataset from the GCP bucket, supporting year-based datasets.
-    load_glsea_data_and_context(metadata, years=None): Load GLSEA data across multiple years along with optional context datasets.
+    load_glsea_data(metadata, years=None): Load GLSEA data across multiple years.
+    load_glsea3_data(metadata, years=None): Load GLSEA3 data across multiple years.
+    load_context_data(metadata): Load context data (e.g., bathymetry, lakemask).
 
 Example Usage:
     # Load metadata
     metadata = load_metadata()
 
     # Load GLSEA data for specific years
-    data = load_glsea_data_and_context(metadata, years=[1995, 1996, 1997])
+    glsea_data = load_glsea_data(metadata, years=[1995, 1996, 1997])
 
     # Access SST data for 1995
-    sst_data_1995 = data["glsea"][1995]["sst"][:]
+    sst_data_1995 = glsea_data[1995]["sst"][:]
     print(sst_data_1995)
+
+    # Load GLSEA3 data for all years
+    glsea3_data = load_glsea3_data(metadata)
+
+    # Load context data (bathymetry and lakemask)
+    context_data = load_context_data(metadata)
 """
 
 import json
@@ -57,8 +65,8 @@ def load_dataset(dataset_name, metadata, year=None):
 
     return ds
 
-def load_glsea_data_and_context(metadata, years=None):
-    """Load GLSEA data across multiple years and additional context datasets (e.g., bathymetry, lakemask)."""
+def load_glsea_data(metadata, years=None):
+    """Load GLSEA data across multiple years."""
     glsea_data = {}
     if years:
         for year in years:
@@ -68,12 +76,31 @@ def load_glsea_data_and_context(metadata, years=None):
             year: load_dataset("glsea", metadata, year)
             for year in range(1995, 2023)
         }
-    
+    return glsea_data
+
+def load_glsea3_data(metadata, years=None):
+    """Load GLSEA3 data across multiple years."""
+    glsea3_data = {}
+    if years:
+        for year in years:
+            glsea3_data[year] = load_dataset("glsea3", metadata, year)
+    else:
+        glsea3_data = {
+            year: load_dataset("glsea3", metadata, year)
+            for year in range(2006, 2023)
+        }
+    return glsea3_data
+
+def load_context_data(metadata):
+    """Load context data (e.g., bathymetry, lakemask)."""
+    context_data = {}
     bathymetry_data = load_dataset("bathymetry", metadata) if "bathymetry" in metadata["datasets"] else None
     lakemask_data = load_dataset("lakemask", metadata) if "lakemask" in metadata["datasets"] else None
     
-    return {
-        "glsea": glsea_data,
-        "bathymetry": bathymetry_data,
-        "lakemask": lakemask_data,
-    }
+    if bathymetry_data:
+        context_data["bathymetry"] = bathymetry_data
+    if lakemask_data:
+        context_data["lakemask"] = lakemask_data
+
+    return context_data
+

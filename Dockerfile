@@ -21,11 +21,23 @@ COPY . /app
 # Upgrade pip to the latest version
 RUN pip install --upgrade pip
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies and the package in editable mode
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install -e .
 
 # Expose port (if needed, for example for Jupyter)
 EXPOSE 8888
 
 # Default command: run an interactive shell session
-CMD ["bash"]
+#CMD ["bash"]
+
+# Create a non-root user for Jupyter
+RUN useradd -m jupyter_user
+USER jupyter_user
+
+# Set up Jupyter configuration
+RUN mkdir -p /home/jupyter_user/.jupyter && \
+    jupyter notebook --generate-config
+
+# Start Jupyter notebook instead of bash
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]

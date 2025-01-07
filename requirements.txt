@@ -37,4 +37,3 @@ requests     # For HTTP requests
 
 # Additional dependencies for working with Zarr and cloud storage
 h5py         # For HDF5 file handling (often used with Zarr)
-json         # For working with JSON data
