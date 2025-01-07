@@ -1,4 +1,3 @@
-Here's the complete README.md content:
 # Project Configuration
 
 This directory contains configuration files

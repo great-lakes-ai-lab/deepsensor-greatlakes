@@ -53,9 +53,11 @@ cover/
 
 # VSCode
 .vscode/
-.vscode/*.code-workspace
+*.code-workspace
 .vscode/settings.json
 .vscode/launch.json
+.vscode/extensions.json
+.vscode/tasks.json
 
 # Data configuration directories
 /data/seasonal_cycles/*

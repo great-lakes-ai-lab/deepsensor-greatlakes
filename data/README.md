@@ -1,6 +1,6 @@
 # `data/` Folder
 
-This folder is used to organize configuration, model artifacts, and related files for the Great Lakes Sea Surface Temperature (SST) Project.
+This folder is used to organize configuration, model artifacts, and related files.
 
 ## Folder Structure
 

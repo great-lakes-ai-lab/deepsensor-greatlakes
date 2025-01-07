@@ -130,6 +130,6 @@ This repository builds on the [DeepSensor](https://github.com/willirath/deepsens
 ---
 
 ## Contact  
-For questions or collaborations, feel free to open a discussion or reach out via email: your_email@example.com.  
+For questions or collaborations, feel free to open a discussion.  
 
 
