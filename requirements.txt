@@ -42,3 +42,7 @@ h5py         # For HDF5 file handling (often used with Zarr)
 cartopy      # For map-style plots 
 matplotlib   # Plotting library
 seaborn      # Fancy plotting library
+
+# Testing
+pytest
+rioxarray # Some tests might require this
