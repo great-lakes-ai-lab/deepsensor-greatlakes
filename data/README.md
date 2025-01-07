@@ -1,9 +1,6 @@
-```markdown
-# `data/` Folder  
+# `data/` Folder
 
-This folder is used to organize datasets and related files for the project. Below is a description of its structure and how to use the data stored here.
-
----
+This folder is used to organize configuration, model artifacts, and related files for the Great Lakes Sea Surface Temperature (SST) Project.
 
 ## Folder Structure
 
@@ -11,65 +8,64 @@ This folder is used to organize datasets and related files for the project. Belo
 data/
 ├── README.md              # Documentation for the data folder
 ├── config/                # Configuration files for data access
+│   ├── README.md          # Explains configuration details
 │   ├── gcp_paths.yaml     # Paths to datasets stored in GCP buckets
 │   └── dataset_metadata.json  # Metadata about datasets
-├── raw/                   # Placeholder for raw datasets
-│   ├── glsea/             # Local or symlink to `great-lakes-osd/zarr_experimental/glsea`
-│   └── glsea3/            # Local or symlink to `great-lakes-osd/zarr_experimental/glsea3`
-├── processed/             # Preprocessed or intermediate datasets
-│   ├── glsea_subset.zarr/ # Example subset of GLSEA data
-│   └── other_processed.nc
-├── test/                  # Minimal or mock datasets for testing
-│   ├── small_glsea.zarr/  # Tiny subset of GLSEA for unit tests
-│   └── sample_input.nc
-└── outputs/               # Output files from experiments or processing scripts
-    └── analysis_results.csv
+├── processors/            # DataProcessor configurations
+│   └── README.md          # Guidelines for data processors
+└── seasonal_cycles/       # Seasonal cycle configurations
+    └── README.md          # Information about seasonal cycle storage
 ```
 
----
+## Purpose of Each Subdirectory
 
-## Using the Datasets
+### `config/`
+- Stores configuration files for data access
+- Contains metadata about datasets
+- Defines Google Cloud Storage paths
+- Provides project-wide configuration details
 
-### **Accessing Datasets in GCP Buckets**  
-The following datasets are stored in public Google Cloud Storage buckets:  
-1. **GLSEA Dataset**: `great-lakes-osd/zarr_experimental/glsea`  
-2. **GLSEA3 Dataset**: `great-lakes-osd/zarr_experimental/glsea3`
+### `processors/`
+- Stores DataProcessor configurations from DeepSensor
+- Maintains normalization and preprocessing parameters
+- Enables reproducible data transformations
 
-These datasets can be accessed programmatically using Python with the `fsspec` and `zarr` libraries. Example code:
+### `seasonal_cycles/`
+- Stores seasonal cycle calculations
+- Preserves monthly climatological means
+- Supports anomaly computation across different datasets
+
+## Working with Configurations
+
+### Accessing Configurations
 
 ```python
-import zarr
-import fsspec
+import json
+import yaml
 
-store = fsspec.get_mapper('gs://great-lakes-osd/zarr_experimental/glsea')
-ds = zarr.open_consolidated(store)
-print(ds.tree())
+# Load dataset metadata
+with open('data/config/dataset_metadata.json', 'r') as f:
+    dataset_metadata = json.load(f)
+
+# Load GCP paths
+with open('data/config/gcp_paths.yaml', 'r') as f:
+    gcp_paths = yaml.safe_load(f)
 ```
 
----
+## Best Practices
 
-### **Working with Local Test Datasets**  
-For testing or development, you can use the smaller datasets stored in the `test/` directory. Example:
+1. **Do not commit large files** to the repository
+2. Use `.gitkeep` or README files to maintain directory structure
+3. Document any changes to configurations
+4. Ensure reproducibility of data processing steps
 
-```python
-import zarr
+## Adding New Configurations
 
-test_store = zarr.DirectoryStore('data/test/small_glsea.zarr')
-test_ds = zarr.open(test_store)
-print(test_ds.tree())
-```
+Refer to the README in the `config/` directory for detailed instructions on adding new datasets or modifying existing configurations.
 
----
+## Dependencies
 
-## Adding Data to This Folder
-- **Raw Datasets**: Place symlinks or stubs in `raw/` for large datasets stored externally. Avoid storing large files directly.
-- **Processed Data**: Save intermediate or preprocessed files to the `processed/` folder.
-- **Testing Data**: Include minimal mock data in the `test/` folder for unit tests.
-
----
-
-## Notes
-1. **Large Datasets**: Avoid committing large files to the repository. Use `.gitignore` to exclude unnecessary files.
-2. **Documentation**: Update this README if new datasets or files are added to the folder structure.
-3. **Sensitive Data**: Do not store credentials or sensitive data in this folder.
-```
+- `json`
+- `yaml`
+- `deepsensor`
+- `fsspec`

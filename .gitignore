@@ -51,6 +51,20 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# VSCode
+.vscode/
+.vscode/*.code-workspace
+.vscode/settings.json
+.vscode/launch.json
+
+# Data configuration directories
+/data/seasonal_cycles/*
+/data/processors/*
+
+# Ensure these directories exist but are not tracked
+!data/seasonal_cycles/README.md
+!data/processors/README.md
+
 # Translations
 *.mo
 *.pot
