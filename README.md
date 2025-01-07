@@ -68,14 +68,14 @@ docker build -t my-deepsensor-app .
 ```
 
 * The `-t` flag names the image (`my-deepsensor-app`).
-& This process installs dependencies from the `requirements.txt` file and prepares the environment for running the app.
+* This process installs dependencies from the `requirements.txt` file and prepares the environment for running the app.
 
 #### **2. Run the Docker Container**
 
 To run the container and expose necessary ports (e.g., Jupyter Notebook):
 
 ```bash
-docker run -p 8888:8888 -v $(pwd):/app deepsensor-greatlakes
+docker run -p 8888:8888 -v $(pwd):/app my-deepsensor-app
 ```
 
 * `-it` allows interactive terminal use.
