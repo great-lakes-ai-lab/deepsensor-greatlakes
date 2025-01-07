@@ -1,0 +1,40 @@
+{
+  "datasets": {
+      "glsea": {
+          "description": "Great Lakes Surface Environmental Analysis data (GLSEA)",
+          "path": "gs://great-lakes-osd/zarr_experimental/glsea",
+          "format": "zarr",
+          "consolidated": false,
+          "variables": ["sst", "lat", "lon", "time", "crs"],
+          "time_range": {
+              "start": "1995-01-01",
+              "end": "2023-12-31"
+          }
+      },
+      "glsea3": {
+          "description": "Great Lakes Surface Environmental Analysis data (GLSEA3)",
+          "path": "gs://great-lakes-osd/zarr_experimental/glsea3",
+          "format": "zarr",
+          "consolidated": false,
+          "variables": ["sst", "lat", "lon", "time", "crs"],
+          "time_range": {
+              "start": "2006-01-01",
+              "end": "2023-12-31"
+          }
+      },
+      "bathymetry": {
+        "path": "gs://great-lakes-osd/context/interpolated_bathymetry.nc",
+        "format": "netcdf"
+      },
+      "lakemask": {
+        "path": "gs://great-lakes-osd/context/lakemask.nc",
+        "format": "netcdf"
+      }
+  },
+  "metadata": {
+      "owner": "Dani Jones",
+      "last_updated": "2025-01-06",
+      "project_name": "DeepSensor Great Lakes",
+      "description": "Configuration for accessing Great Lakes datasets on GCP"
+  }
+}

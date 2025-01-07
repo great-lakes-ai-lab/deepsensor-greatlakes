@@ -1,0 +1,24 @@
+datasets:
+  glsea:
+    description: "Great Lakes Surface Environmental Analysis data (GLSEA)"
+    path: "gs://great-lakes-osd/zarr_experimental/glsea"
+    consolidated: false
+  glsea3:
+    description: "Great Lakes Surface Environmental Analysis data (GLSEA3)"
+    path: "gs://great-lakes-osd/zarr_experimental/glsea3"
+    consolidated: false
+
+default_chunk_size:
+  # Default chunk sizes for loading datasets into memory
+  time: 46
+  latitude: 105
+  longitude: 148
+
+metadata:
+  owner: "Dani Jones"
+  last_updated: "2025-01-06"
+  project_name: "DeepSensor Great Lakes"
+  description: "Configuration for accessing Great Lakes datasets on GCP"
+
+gcsfs_options:
+  anon: true
