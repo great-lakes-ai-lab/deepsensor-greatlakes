@@ -32,6 +32,9 @@
    source venv/bin/activate  
    pip install -r requirements.txt  
    ```
+
+For more detailed information about environment setup for DeepSensor, [including setup on U-M HPC, see this guide](ENVIRONMENT_SETUP.md).
+   
 ## Repository Structure
 
 ```
