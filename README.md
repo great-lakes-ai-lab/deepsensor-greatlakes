@@ -20,6 +20,9 @@
 2. [Docker](https://www.docker.com/get-started) (optional but recommended)  
 3. Access to [GLSEA](https://www.glerl.noaa.gov/data/) and [ERA5](https://cds.climate.copernicus.eu/) datasets.  
 
+### Computing Environment Setup
+For detailed information about environment setup for DeepSensor, [including setup on U-M HPC, see this guide](ENVIRONMENT_SETUP.md).
+
 ### Installation  
 1. Clone the repository:  
    ```bash  
