@@ -172,8 +172,17 @@ def load_context_data(metadata):
     if "bathymetry" in metadata["datasets"]:
         bathymetry = load_dataset("bathymetry", metadata)
         context_data["bathymetry"] = bathymetry
+        
+        # Check the variable name and assign a more meaningful one if needed
         var_name = list(bathymetry.data_vars)[0]
+        
+        # Rename the variable for clarity
+        if var_name == '__xarray_dataarray_variable__':
+            bathymetry = bathymetry.rename({var_name: 'bathymetry'})  
+            var_name = 'bathymetry'  
+        
         data = bathymetry[var_name].compute()
+        
         print("\nBathymetry Validation:")
         print(f"Dimensions: {' x '.join(str(bathymetry[var_name].sizes[dim]) for dim in bathymetry[var_name].dims)}")
         print(f"Depth range: {data.min().values:.2f}m to {data.max().values:.2f}m")
