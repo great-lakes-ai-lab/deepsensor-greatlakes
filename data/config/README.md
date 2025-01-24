@@ -1,6 +1,6 @@
 # Project Configuration
 
-This directory contains configuration files that enable loading of datasets. It also contains a description of available datasets. 
+This directory contains configuration files that enable loading of datasets. 
 
 ## Configuration Files
 
@@ -21,58 +21,6 @@ This directory contains configuration files that enable loading of datasets. It 
 - Support for multiple datasets
 - Flexible data access configuration
 - Cloud storage integration
-
-## Dataset Details
-
-| **Dataset Name**     | **Description**                                              | **Data Path**                                                       | **Format** | **Consolidated** | **Variables**                            | **Time Range**           |
-|----------------------|--------------------------------------------------------------|--------------------------------------------------------------------|------------|------------------|------------------------------------------|--------------------------|
-| **glsea**            | Great Lakes Surface Environmental Analysis data (GLSEA)      | gs://great-lakes-osd/zarr_experimental/glsea                        | zarr       | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
-| **glsea_umhpc**      | Great Lakes Surface Environmental Analysis data (GLSEA) on U-M HPC | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA_NETCDF       | netcdf     | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
-| **glsea3**           | Great Lakes Surface Environmental Analysis data (GLSEA3)     | gs://great-lakes-osd/zarr_experimental/glsea3                       | zarr       | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
-| **glsea3_umhpc**     | Great Lakes Surface Environmental Analysis data (GLSEA3) on U-M HPC | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA3_NETCDF      | netcdf     | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
-| **bathymetry**       | Interpolated bathymetry data for the Great Lakes             | gs://great-lakes-osd/context/interpolated_bathymetry.nc             | netcdf     | N/A              | N/A                                      | N/A                      |
-| **bathymetry_umhpc** | Interpolated bathymetry data for the Great Lakes on U-M HPC     | /nfs/turbo/seas-dannes/SST-sensor-placement-input/bathymetry/interpolated_bathymetry.nc | netcdf     | N/A              | N/A                                      | N/A                      |
-| **lakemask**         | Lake mask data for the Great Lakes                          | gs://great-lakes-osd/context/lakemask.nc                            | netcdf     | N/A              | N/A                                      | N/A                      |
-| **lakemask_umhpc**   | Lake mask data for the Great Lakes on U-M HPC                  | /nfs/turbo/seas-dannes/SST-sensor-placement-input/masks/lakemask.nc | netcdf     | N/A              | N/A                                      | N/A                      |
-
-### Accessing Datasets via ArrayLake
-
-Datasets from this project, including the GLSEA and GLSEA3 datasets, can be accessed using the ArrayLake library for cloud-based data management. ArrayLake simplifies data loading and management for large datasets stored on cloud servers. 
-
-To access the datasets:
-
-1. **Install ArrayLake**:
-   Install ArrayLake using pip if it's not already installed:
-
-   ```bash
-   pip install arraylake
-   ```
-2. **Complete Authentication Process**:
-   You will need to be added to the `great-lakes-ai-lab` ArrayLake organizaiton for this next step to work. Use this command:
-   ```bash
-   arraylake auth login
-
-   # Or, if running from a remote environment
-    arraylake auth login --no-browser
-   ```
-   To complete the authentication process. For more information, see the [ArrayLake documentation](https://docs.earthmover.io/).
-
-3. **Load Data with ArrayLake**: 
-   You can load the datasets into an xarray object with the following code:
-    ```python
-    from arraylake import Client
-    client = Client()
-
-    # Initialize ArrayLake repo object
-    repo = client.get_repo('great-lakes-ai-lab/glsea3')
-
-    # Load GLSEA3 dataset
-    ds = repo.to_xarray()
-
-    # Explore the dataset
-    print(ds)
-    ```
-
 
 ## Access and Usage
 
