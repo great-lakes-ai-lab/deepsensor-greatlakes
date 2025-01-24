@@ -11,6 +11,16 @@
               "end": "2023-12-31"
           }
       },
+      "glsea_umhpc": {
+          "description": "Great Lakes Surface Environmental Analysis data (GLSEA) - umhpc",
+          "path": "/nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA_NETCDF",
+          "format": "netcdf",
+          "variables": ["sst", "lat", "lon", "time", "crs"],
+          "time_range": {
+              "start": "1995-01-01",
+              "end": "2023-12-31"
+          }
+      },
       "glsea3": {
           "description": "Great Lakes Surface Environmental Analysis data (GLSEA3)",
           "path": "gs://great-lakes-osd/zarr_experimental/glsea3",
@@ -22,19 +32,37 @@
               "end": "2023-12-31"
           }
       },
+      "glsea3_umhpc": {
+          "description": "Great Lakes Surface Environmental Analysis data (GLSEA3) - umhpc",
+          "path": "/nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA3_NETCDF",
+          "format": "netcdf",
+          "variables": ["sst", "lat", "lon", "time", "crs"],
+          "time_range": {
+              "start": "2006-01-01",
+              "end": "2023-12-31"
+          }
+      },
       "bathymetry": {
-        "path": "gs://great-lakes-osd/context/interpolated_bathymetry.nc",
-        "format": "netcdf"
+          "path": "gs://great-lakes-osd/context/interpolated_bathymetry.nc",
+          "format": "netcdf"
+      },
+      "bathymetry_umhpc": {
+          "path": "/nfs/turbo/seas-dannes/SST-sensor-placement-input/bathymetry/interpolated_bathymetry.nc",
+          "format": "netcdf"
       },
       "lakemask": {
-        "path": "gs://great-lakes-osd/context/lakemask.nc",
-        "format": "netcdf"
+          "path": "gs://great-lakes-osd/context/lakemask.nc",
+          "format": "netcdf"
+      },
+      "lakemask_umhpc": {
+          "path": "/nfs/turbo/seas-dannes/SST-sensor-placement-input/masks/lakemask.nc",
+          "format": "netcdf"
       }
   },
   "metadata": {
       "owner": "Dani Jones",
       "last_updated": "2025-01-06",
       "project_name": "DeepSensor Great Lakes",
-      "description": "Configuration for accessing Great Lakes datasets on GCP"
+      "description": "Configuration for accessing Great Lakes datasets"
   }
 }

@@ -7,13 +7,19 @@ seaborn
 jupyter
 notebook
 
+# ArrayLake integration
+arraylake 
+pydantic==2.9
+dask
+pooch
+
 # DeepSensor and related ML dependencies
 deepsensor>=0.4.2  # Adjust version as needed
 
 # Cloud & Data handling
-gcsfs  # For GCP bucket access
-zarr   # For Zarr file handling
-fsspec # Filesystem specification library for cloud-based storage
+gcsfs          # For GCP bucket access
+zarr==2.18.2   # For Zarr file handling
+fsspec         # Filesystem specification library for cloud-based storage
 
 # Docker-related dependencies (if needed)
 docker  # If you're working with Docker inside the repo
@@ -31,7 +37,7 @@ keras        # If you're using Keras with TensorFlow
 
 # Additional dependencies for data access and processing (based on your needs)
 xarray       # For multi-dimensional array processing
-netCDF4      # If working with netCDF data
+netcdf4      # If working with netCDF data
 h5netcdf     # Needed for running some types of NetCDF files
 requests     # For HTTP requests
 
