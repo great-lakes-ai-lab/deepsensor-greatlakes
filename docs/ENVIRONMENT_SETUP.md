@@ -3,6 +3,7 @@
 This guide outlines procedures to configure the DeepSensor environment on the Great Lakes High-Performance Computing (HPC) platform at the University of Michigan for both GPU and non-GPU use. It differentiates between the initial setup of the environment and later use, as well as providing instructions for working with and without the GitHub repository.
 
 ## Table of Contents
+- [Quick Start: Automated Setup Script](#quick-start-on-u-m-great-lakes-hpc-automated-setup-script)
 - [Non-GPU Environment Setup](#cpu-only-environment-setup)
 - [GPU Environment Setup](#gpu-environment-setup-with-pytorch)
   - [Setting Up for the First Time](#setting-up-for-the-first-time)
@@ -30,6 +31,17 @@ Note: This script is tailored specifically for the Great Lakes HPC system and ma
 
 ### Tutorial Video
 [![Screenshot](https://github.com/user-attachments/assets/a92732a3-9bd1-44b0-8f17-99bf3fd37614)](https://youtu.be/bCGabxyTyYc)
+
+### (Optional) Install Tools In This Repository
+After installing the necessary dependencies above, you can import this `deepsensor-greatlakes` repo as a package by running the following:
+```bash
+pip install .
+```
+This command should be run from within the repository directory (the root of this repo), where the `setup.py` file is located. 
+If you wish to develop the tools in this repository, install the package in editable mode:
+```bash
+pip install -e .
+```
 
 For detailed manual setup instructions, refer to the sections below.
 

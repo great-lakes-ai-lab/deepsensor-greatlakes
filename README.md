@@ -36,6 +36,12 @@ If you are using this on your local machine, the following steps should be suffi
    python3 -m venv venv  
    source venv/bin/activate  
    pip install -r requirements.txt  
+   pip install -e . # Install code in this repo as a local package 
+   ```
+3. (Optional) If you are planning to use a Jupyter Notebook environment, install the necessary Jupyter kernel:
+   ```bash
+   pip install ipykernel
+   python -m ipykernel install --user --name=venv --display-name "Python (venv)"
    ```
 
 ## Repository Structure
