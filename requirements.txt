@@ -18,7 +18,7 @@ deepsensor>=0.4.2  # Adjust version as needed
 
 # Cloud & Data handling
 gcsfs          # For GCP bucket access
-zarr==2.18.3   # For Zarr file handling
+zarr==2.18.2   # For Zarr file handling
 fsspec         # Filesystem specification library for cloud-based storage
 
 # Docker-related dependencies (if needed)
