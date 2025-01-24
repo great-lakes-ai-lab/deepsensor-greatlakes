@@ -16,7 +16,7 @@
 ## Getting Started  
 
 ### Prerequisites  
-1. **Python 3.8+**  
+1. **Python 3.12+**  
 2. [Docker](https://www.docker.com/get-started) (optional but recommended)  
 3. Access to [GLSEA](https://www.glerl.noaa.gov/data/) and other relevant datasets.  
 

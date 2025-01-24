@@ -35,14 +35,44 @@ This directory contains configuration files that enable loading of datasets. It 
 | **lakemask**         | Lake mask data for the Great Lakes                          | gs://great-lakes-osd/context/lakemask.nc                            | netcdf     | N/A              | N/A                                      | N/A                      |
 | **lakemask_umhpc**   | Lake mask data for the Great Lakes on U-M HPC                  | /nfs/turbo/seas-dannes/SST-sensor-placement-input/masks/lakemask.nc | netcdf     | N/A              | N/A                                      | N/A                      |
 
+### Accessing Datasets via ArrayLake
 
-### GLSEA
-- Time Range: 1995-01-01 to 2023-12-31
-- Variables: SST, Latitude, Longitude, Time, CRS
+Datasets from this project, including the GLSEA and GLSEA3 datasets, can be accessed using the ArrayLake library for cloud-based data management. ArrayLake simplifies data loading and management for large datasets stored on cloud servers. 
 
-### GLSEA3
-- Time Range: 2006-01-01 to 2023-12-31
-- Variables: SST, Latitude, Longitude, Time, CRS
+To access the datasets:
+
+1. **Install ArrayLake**:
+   Install ArrayLake using pip if it's not already installed:
+
+   ```bash
+   pip install arraylake
+   ```
+2. **Complete Authentication Process**:
+   You will need to be added to the `great-lakes-ai-lab` ArrayLake organizaiton for this next step to work. Use this command:
+   ```bash
+   arraylake auth login
+
+   # Or, if running from a remote environment
+    arraylake auth login --no-browser
+   ```
+   To complete the authentication process. For more information, see the [ArrayLake documentation](https://docs.earthmover.io/).
+
+3. **Load Data with ArrayLake**: 
+   You can load the datasets into an xarray object with the following code:
+    ```python
+    from arraylake import Client
+    client = Client()
+
+    # Initialize ArrayLake repo object
+    repo = client.get_repo('great-lakes-ai-lab/glsea3')
+
+    # Load GLSEA3 dataset
+    ds = repo.to_xarray()
+
+    # Explore the dataset
+    print(ds)
+    ```
+
 
 ## Access and Usage
 

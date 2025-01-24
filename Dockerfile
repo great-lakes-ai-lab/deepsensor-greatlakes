@@ -1,5 +1,5 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9-slim
+# Use an official Python runtime as a parent image (Python 3.12)
+FROM python:3.12-slim
 
 # Install system dependencies for compiling native extensions
 RUN apt-get update && apt-get install -y \
@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     libsnappy-dev \
     libbz2-dev \
     liblz4-dev \
-    libzstd-dev
+    libzstd-dev \
+    curl  # Ensure curl is available for fetching extra packages if needed
 
 # Set the working directory
 WORKDIR /app
@@ -27,9 +28,6 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 
 # Expose port (if needed, for example for Jupyter)
 EXPOSE 8888
-
-# Default command: run an interactive shell session
-#CMD ["bash"]
 
 # Create a non-root user for Jupyter
 RUN useradd -m jupyter_user
