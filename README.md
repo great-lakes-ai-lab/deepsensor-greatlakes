@@ -18,12 +18,14 @@
 ### Prerequisites  
 1. **Python 3.8+**  
 2. [Docker](https://www.docker.com/get-started) (optional but recommended)  
-3. Access to [GLSEA](https://www.glerl.noaa.gov/data/) and [ERA5](https://cds.climate.copernicus.eu/) datasets.  
+3. Access to [GLSEA](https://www.glerl.noaa.gov/data/) and other relevant datasets.  
 
 ### Computing Environment Setup
-For detailed information about environment setup for DeepSensor, [including setup on U-M HPC, see this guide](ENVIRONMENT_SETUP.md).
+For detailed information about environment setup for DeepSensor, [including setup on U-M HPC, see this guide](docs/ENVIRONMENT_SETUP.md).
 
 ### Installation  
+If you are using this on your local machine, the following steps should be sufficient:
+
 1. Clone the repository:  
    ```bash  
    git clone https://github.com/yourusername/deepsensor-greatlakes.git  
@@ -35,6 +37,7 @@ For detailed information about environment setup for DeepSensor, [including setu
    source venv/bin/activate  
    pip install -r requirements.txt  
    ```
+
 ## Repository Structure
 
 ```
@@ -52,7 +55,7 @@ deepsensor-greatlakes/
 
 ## Datasets  
 - **GLSEA**: Great Lakes Surface Environmental Analysis (available in Zarr format).  
-- **ERA5**: ECMWF reanalysis data for meteorological applications.  
+- **ERA5**: ECMWF reanalysis data for meteorological applications.  (Not yet implemented)
 
 Refer to `data/README.md` for instructions on accessing and preparing datasets.  
 
@@ -60,7 +63,7 @@ Refer to `data/README.md` for instructions on accessing and preparing datasets.
 
 ### Docker Setup for DeepSensor-GreatLakes
 
-This guide walks you through the steps to build and run the Docker container for the DeepSensor-GreatLakes repository, which includes a Jupyter Notebook environment for hands-on work with Great Lakes data.
+This guide walks you through the steps to build and run the Docker container for the `DeepSensor-GreatLakes` repository, which includes a Jupyter Notebook environment for hands-on work with Great Lakes data.
 
 #### **1. Build the Docker Image**
 

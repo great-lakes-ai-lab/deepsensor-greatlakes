@@ -12,6 +12,24 @@ This guide outlines procedures to configure the DeepSensor environment on the Gr
 - [Setting Up a Jupyter Notebook Session on Great Lakes HPC](#setting-up-a-jupyter-notebook-session-on-great-lakes-hpc)
 - [Slurm Script for Command Line GPU Jobs](#slurm-script-for-command-line-gpu-jobs)
 
+## Quick Start on U-M Great Lakes HPC: Automated Setup Script
+If you want to quickly set up a GPU-enabled environment on U-M Great Lakes HPC, you can use the provided Bash script `utils/create_new_deepsensor_env_on_GL.sh`. This script automates the following tasks:
+
+- Loads the necessary system modules for GPU support.
+- Creates and activates a virtual environment.
+- Installs required Python packages, including PyTorch with GPU support and DeepSensor.
+- Adds the virtual environment as a Jupyter kernel for ease of use.
+
+### Using the Script
+1. Clone or download the repository containing the script.
+2. Run the script in a terminal session on Great Lakes HPC:
+```bash utils/create_new_deepsensor_env_on_GL.sh```
+3. Follow the prompts to name your environment and confirm setup steps.
+
+Note: This script is tailored specifically for the Great Lakes HPC system and may not work on other platforms without modifications.
+
+For detailed manual setup instructions, refer to the sections below.
+
 ## CPU-only Environment Setup
 To set up DeepSensor for non-GPU use, follow these instructions:
 
@@ -163,46 +181,19 @@ To use DeepSensor without incorporating additional functions from the GitHub rep
 
 When launching a Jupyter Notebook on Great Lakes HPC, fill out the web form with the following selections:
 
-1. **Anaconda Python Module:**
-   - Choose `python3.10-anaconda/2023.03` to define the version of Python your Jupyter Notebook server will use.
-
-2. **Slurm Account:**
-   - Enter the Slurm account identifier, for example: `dannes0`.
-
-3. **Partition:**
-   - Select the `gpu` partition for GPU-accelerated computation.
-
-4. **Number of Hours:**
-   - Specify the job duration, e.g., `1` hour.
-
-5. **Number of Cores:**
-   - Indicate the number of CPU cores your job will use, suggesting `1` if your program is not parallelized.
-
-6. **Memory:**
-   - Request the desired memory for the job, e.g., `40 GB`.
-
-7. **Number of GPUs:**
-   - Specify the number of GPUs needed, usually `1` unless your process is specifically designed for multiple GPUs.
-
-8. **GPU Compute Mode:**
-   - Set to shared if multiple processes will share the GPU, exclusive if not specified.
-
-9. **Software Licenses (if required):**
-   - Request any specific software licenses that your job requires.
-
-10. **Module Commands:**
-    - Enter modules to be loaded before starting the session:
-      ```
-      load cuda/11.8.0 cudnn/11.8-v8.7.0
-      ```
-    - Ensure to include all necessary modules.
-
-11. **Source Setup File:**
-    - Provide the path to the setup file that activates your virtual environment:
-      ```
-      /home/uniqname/deepsensor_env_gpu/bin/activate
-      ```
-    - This file should contain activation commands and be executable.
+| **Field**                 | **Details**                                                                                                     | **Example / Notes**                                                                                   |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Anaconda Python Module** | Choose the version of Python for your Jupyter Notebook server.                                                  | `python3.10-anaconda/2023.03`                                                                         |
+| **Slurm Account**          | Enter the Slurm account identifier.                                                                             | `dannes0`                                                                                            |
+| **Partition**              | Select the partition for computation. Use `gpu` for GPU-accelerated tasks.                                     | `gpu`                                                                                                |
+| **Number of Hours**        | Specify the job duration in hours.                                                                              | `1` hour                                                                                             |
+| **Number of Cores**        | Indicate the number of CPU cores your job will use. Use `1` for non-parallelized jobs.                          | `1` core                                                                                             |
+| **Memory**                 | Request the memory needed for the job.                                                                          | `40 GB`                                                                                              |
+| **Number of GPUs**         | Specify the number of GPUs required for the job. Usually `1` unless designed for multi-GPU processes.           | `1`                                                                                                  |
+| **GPU Compute Mode**       | Specify GPU usage mode: `shared` if multiple processes share the GPU, or `exclusive` if not specified.          | `shared`                                                                                            |
+| **Software Licenses**      | Request any specific software licenses required by your job.                                                    | Leave blank if not applicable.                                                                       |
+| **Module Commands**        | List modules to be loaded before starting the session.                                                          | `load cuda/11.8.0 cudnn/11.8-v8.7.0`                                                          |
+| **Source Setup File**      | Provide the path to the file that activates your virtual environment.                                            | `/home/uniqname/deepsensor_env_gpu/bin/activate`                                                     |
 
 Please note that these instructions assume you have already created and configured the `deepsensor_env_gpu` virtual environment as per the [GPU Environment Setup](#gpu-environment-setup) section.
 
