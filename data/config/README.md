@@ -1,6 +1,6 @@
 # Project Configuration
 
-This directory contains configuration files
+This directory contains configuration files that enable loading of datasets. It also contains a description of available datasets. 
 
 ## Configuration Files
 
@@ -23,6 +23,18 @@ This directory contains configuration files
 - Cloud storage integration
 
 ## Dataset Details
+
+| **Dataset Name**     | **Description**                                              | **Data Path**                                                       | **Format** | **Consolidated** | **Variables**                            | **Time Range**           |
+|----------------------|--------------------------------------------------------------|--------------------------------------------------------------------|------------|------------------|------------------------------------------|--------------------------|
+| **glsea**            | Great Lakes Surface Environmental Analysis data (GLSEA)      | gs://great-lakes-osd/zarr_experimental/glsea                        | zarr       | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
+| **glsea_umhpc**      | Great Lakes Surface Environmental Analysis data (GLSEA) on U-M HPC | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA_NETCDF       | netcdf     | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
+| **glsea3**           | Great Lakes Surface Environmental Analysis data (GLSEA3)     | gs://great-lakes-osd/zarr_experimental/glsea3                       | zarr       | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
+| **glsea3_umhpc**     | Great Lakes Surface Environmental Analysis data (GLSEA3) on U-M HPC | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA3_NETCDF      | netcdf     | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
+| **bathymetry**       | Interpolated bathymetry data for the Great Lakes             | gs://great-lakes-osd/context/interpolated_bathymetry.nc             | netcdf     | N/A              | N/A                                      | N/A                      |
+| **bathymetry_umhpc** | Interpolated bathymetry data for the Great Lakes on U-M HPC     | /nfs/turbo/seas-dannes/SST-sensor-placement-input/bathymetry/interpolated_bathymetry.nc | netcdf     | N/A              | N/A                                      | N/A                      |
+| **lakemask**         | Lake mask data for the Great Lakes                          | gs://great-lakes-osd/context/lakemask.nc                            | netcdf     | N/A              | N/A                                      | N/A                      |
+| **lakemask_umhpc**   | Lake mask data for the Great Lakes on U-M HPC                  | /nfs/turbo/seas-dannes/SST-sensor-placement-input/masks/lakemask.nc | netcdf     | N/A              | N/A                                      | N/A                      |
+
 
 ### GLSEA
 - Time Range: 1995-01-01 to 2023-12-31
