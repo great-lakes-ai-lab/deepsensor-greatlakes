@@ -28,6 +28,9 @@ If you want to quickly set up a GPU-enabled environment on U-M Great Lakes HPC, 
 
 Note: This script is tailored specifically for the Great Lakes HPC system and may not work on other platforms without modifications.
 
+### Tutorial Video
+[![Screenshot](https://github.com/user-attachments/assets/a92732a3-9bd1-44b0-8f17-99bf3fd37614)](https://youtu.be/bCGabxyTyYc)
+
 For detailed manual setup instructions, refer to the sections below.
 
 ## CPU-only Environment Setup
