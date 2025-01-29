@@ -31,10 +31,10 @@ wandb
 # Jupyter-related (for notebooks)
 ipykernel
 
-# Optional (for running the model training in cloud)
-tensorflow   # Or pytorch, depending on your choice of deep learning framework
-torch        # For PyTorch users
-keras        # If you're using Keras with TensorFlow
+# Optional (for running the model training in cloud - uncomment the one you want to use)
+#tensorflow   # Or pytorch, depending on your choice of deep learning framework
+#keras        # If you're using Keras with TensorFlow
+torch         # For PyTorch users
 
 # Additional dependencies for data access and processing (based on your needs)
 xarray       # For multi-dimensional array processing
