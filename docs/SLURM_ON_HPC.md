@@ -33,6 +33,7 @@ This command will produce my_notebook.py in the same directory. Check the .py fi
 
 
 ## 3. Creating a Batch Script
+In nano, vi, or another text editor, create this file:
 
 ```
 #!/bin/bash
