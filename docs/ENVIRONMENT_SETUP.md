@@ -266,4 +266,79 @@ set_gpu_default_device()
 
 If the above code returns nothing, then the GPU has been detected.
 
+## GPU-Only Environment Setup for DeepSensor on Vertex AI
+The instructions below should help you set up a GPU-enabled environment for DeepSensor on our Google Vertex AI Workbench (JupyterLab). The setup assumes that Python 3.10.16 is available by default on the Vertex AI instance.
+
+Step-by-Step Setup
+### 1. Open a Terminal in JupyterLab
+Open a terminal window within the JupyterLab interface on Vertex AI.
+
+### 2. Install/Upgrade pip (Optional)
+Ensure you have the latest version of pip:
+
+```bash
+pip install --upgrade pip
+```
+
+### 3. Install PyTorch with CUDA Support
+To install PyTorch with CUDA 11.8 support, use the following command:
+
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+
+### 4. Install DeepSensor
+Install the DeepSensor library from PyPI:
+
+```bash
+pip install deepsensor
+```
+
+### 5. Install Additional Packages
+If you need any additional packages (for handling large datasets, plotting, etc.), you can install them with:
+
+```bash
+pip install xarray zarr numpy pandas matplotlib seaborn scikit-learn dask gcsfs
+```
+
+### 6. Install ipykernel and Register Your Environment as a Jupyter Kernel
+To use the environment in JupyterLab, register it as a kernel:
+
+```bash
+pip install ipykernel
+python -m ipykernel install --user --name=deepsensor_env_gpu --display-name "Python (deepsensor_env_gpu)"
+```
+
+### 7. Verify CUDA and PyTorch Installation
+Run the following Python script in a Jupyter notebook to check if CUDA and PyTorch are working properly:
+
+```python
+import torch
+
+# Check if CUDA is available
+print("CUDA available:", torch.cuda.is_available())
+
+# Check CUDA version
+print("CUDA version:", torch.version.cuda)
+
+# Check PyTorch version
+print("PyTorch version:", torch.__version__)
+```
+
+If everything is set up correctly, you should see that CUDA is available, and it will print the correct PyTorch and CUDA versions.
+
+### 8. Verify GPU Availability with DeepSensor Code
+Run the following to test GPU functionality in DeepSensor. If all works correctly, this should return blank:
+
+```python
+import deepsensor.torch
+from deepsensor.data import DataProcessor, TaskLoader, construct_circ_time_ds
+from deepsensor.model import ConvNP
+from deepsensor.train import set_gpu_default_device
+
+# Run on GPU if available by setting GPU as default device
+set_gpu_default_device()
+```
+If all of that works, your DeepSensor GPU environment should be ready to go! 
+
 ---
