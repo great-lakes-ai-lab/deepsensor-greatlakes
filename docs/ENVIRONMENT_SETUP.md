@@ -12,6 +12,7 @@ This guide outlines procedures to configure the DeepSensor environment on the Gr
 - [Working with the GitHub Repository](#working-with-the-github-repository)
 - [Setting Up a Jupyter Notebook Session on Great Lakes HPC](#setting-up-a-jupyter-notebook-session-on-great-lakes-hpc)
 - [Slurm Script for Command Line GPU Jobs](#slurm-script-for-command-line-gpu-jobs)
+- [GPU Environment Setup for Google Vertex AI](#gpu-only-environment-setup-for-deepsensor-on-vertex-ai)
 
 ## Quick Start on U-M Great Lakes HPC: Automated Setup Script
 If you want to quickly set up a GPU-enabled environment on U-M Great Lakes HPC, you can use the provided Bash script `utils/create_new_deepsensor_env_on_GL.sh`. This script automates the following tasks:
