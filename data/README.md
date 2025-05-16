@@ -37,18 +37,39 @@ data/
 
 ## Dataset Details
 
-| **Dataset Name**     | **Description**                                              | **Data Path**                                                       | **Format** | **Consolidated** | **Variables**                            | **Time Range**           |
-|----------------------|--------------------------------------------------------------|--------------------------------------------------------------------|------------|------------------|------------------------------------------|--------------------------|
-| **glsea**            | Great Lakes Surface Environmental Analysis data (GLSEA)      | gs://great-lakes-osd/zarr_experimental/glsea                        | zarr       | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
-| **glsea_umhpc**      | Great Lakes Surface Environmental Analysis data (GLSEA) on U-M HPC | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA_NETCDF       | netcdf     | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
-| **glsea_umhpc (zarr)**      | Great Lakes Surface Environmental Analysis data (GLSEA) on U-M HPC | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA_combined.zarr       | zarr     | Yes               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
-| **glsea3**           | Great Lakes Surface Environmental Analysis data (GLSEA3)     | gs://great-lakes-osd/zarr_experimental/glsea3                       | zarr       | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
-| **glsea3_umhpc**     | Great Lakes Surface Environmental Analysis data (GLSEA3) on U-M HPC | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA3_NETCDF      | netcdf     | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
-| **glsea3_umhpc (zarr)**     | Great Lakes Surface Environmental Analysis data (GLSEA3) on U-M HPC | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA3_combined.zarr      | zarr     | Yes               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
-| **bathymetry**       | Interpolated bathymetry data for the Great Lakes             | gs://great-lakes-osd/context/interpolated_bathymetry.nc             | netcdf     | N/A              | N/A                                      | N/A                      |
-| **bathymetry_umhpc** | Interpolated bathymetry data for the Great Lakes on U-M HPC     | /nfs/turbo/seas-dannes/SST-sensor-placement-input/bathymetry/interpolated_bathymetry.nc | netcdf     | N/A              | N/A                                      | N/A                      |
-| **lakemask**         | Lake mask data for the Great Lakes                          | gs://great-lakes-osd/context/lakemask.nc                            | netcdf     | N/A              | N/A                                      | N/A                      |
-| **lakemask_umhpc**   | Lake mask data for the Great Lakes on U-M HPC                  | /nfs/turbo/seas-dannes/SST-sensor-placement-input/masks/lakemask.nc | netcdf     | N/A              | N/A                                      | N/A                      |
+### Datasets on Google Cloud Platform (GCP)
+
+| **Dataset Name**       | **Description**                                              | **Data Path**                                                       | **Format** | **Consolidated** | **Variables**                            | **Time Range**           |
+|------------------------|--------------------------------------------------------------|--------------------------------------------------------------------|------------|------------------|------------------------------------------|--------------------------|
+| **glsea**              | Great Lakes Surface Environmental Analysis data (GLSEA)      | gs://great-lakes-osd/zarr_experimental/glsea                        | zarr       | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
+| **glsea3**             | Great Lakes Surface Environmental Analysis data (GLSEA3)     | gs://great-lakes-osd/zarr_experimental/glsea3                       | zarr       | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
+| **bathymetry**         | Interpolated bathymetry data for the Great Lakes             | gs://great-lakes-osd/context/interpolated_bathymetry.nc             | netcdf     | N/A              | N/A                                      | N/A                      |
+| **lakemask**           | Lake mask data for the Great Lakes                          | gs://great-lakes-osd/context/lakemask.nc                            | netcdf     | N/A              | N/A                                      | N/A                      |
+| **ice_concentration**  | Ice concentration data for the Great Lakes                   | gs://great-lakes-osd/ice_concentration.zarr                        | zarr       | Yes              | ice_concentration, lat, lon, time        | 1972-01-01 to 2023-05-21 |
+| **ermask**                | Mask for Lake Erie                            | gs://great-lakes-osd/context/ermask.nc                              | netcdf     | N/A              | mask                                    | N/A                      |
+| **hurmask**               | Mask for Lake Huron             | gs://great-lakes-osd/context/hurmask.nc                             | netcdf     | N/A              | mask                                    | N/A                      |                    |                   |
+| **michmask**              | Mask for Lake Michigan                              | gs://great-lakes-osd/context/michmask.nc                            | netcdf     | N/A              | mask                                    | N/A                      |
+| **ontmask**               | Mask for Lake Ontario                               | gs://great-lakes-osd/context/ontmask.nc                             | netcdf     | N/A              | mask                                    | N/A                      |
+| **supmask**               | Mask for Lake Superior                              | gs://great-lakes-osd/context/supmask.nc                             | netcdf     | N/A              | mask                                    | N/A                      |
+
+
+### Datasets on U-M HPC Turbo Research Storage
+
+| **Dataset Name**         | **Description**                                              | **Data Path**                                                       | **Format** | **Consolidated** | **Variables**                            | **Time Range**           |
+|--------------------------|--------------------------------------------------------------|--------------------------------------------------------------------|------------|------------------|------------------------------------------|--------------------------|
+| **glsea**          | Great Lakes Surface Environmental Analysis data (GLSEA) | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA_NETCDF       | netcdf     | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
+| **glsea (zarr)**   | Great Lakes Surface Environmental Analysis data (GLSEA) | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA_combined.zarr | zarr       | Yes              | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
+| **glsea3**         | Great Lakes Surface Environmental Analysis data (GLSEA3) | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA3_NETCDF      | netcdf     | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
+| **glsea3 (zarr)**  | Great Lakes Surface Environmental Analysis data (GLSEA3) | /nfs/turbo/seas-dannes/SST-sensor-placement-input/GLSEA3_combined.zarr | zarr       | Yes              | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
+| **bathymetry**     | Interpolated bathymetry data for the Great Lakes    | /nfs/turbo/seas-dannes/SST-sensor-placement-input/bathymetry/interpolated_bathymetry.nc | netcdf | N/A              | N/A                                      | N/A                      |
+| **lakemask**       | Lake mask data for the Great Lakes                  | /nfs/turbo/seas-dannes/SST-sensor-placement-input/masks/lakemask.nc | netcdf     | N/A              | N/A                                      | N/A                      |
+| **ice_concentration** | Ice concentration data for the Great Lakes      | /nfs/turbo/seas-dannes/SST-sensor-placement-input/NSIDC/ice_concentration.zarr             | Zarr     | N/A              | ice_concentration, lat, lon, time        | 1972-01-01 to 2023-05-21 |
+| **ermask**                | Mask for Lake Erie                            | /nfs/turbo/seas-dannes/SST-sensor-placement-input/NSIDC/ermask.nc    | netcdf     | N/A              | mask                                    | N/A                      |
+| **hurmask**               | Mask for Lake Huron             | /nfs/turbo/seas-dannes/SST-sensor-placement-input/NSIDC/hurmask.nc   | netcdf     | N/A              | mask                                    | N/A                      |
+| **michmask**              | Mask for Lake Michigan                              | /nfs/turbo/seas-dannes/SST-sensor-placement-input/NSIDC/michmask.nc  | netcdf     | N/A              | mask                                    | N/A                      |
+| **ontmask**               | Mask for Lake Ontario                               | /nfs/turbo/seas-dannes/SST-sensor-placement-input/NSIDC/ontmask.nc   | netcdf     | N/A              | mask                                    | N/A                      |
+| **supmask**               | Mask for Lake Superior                              | /nfs/turbo/seas-dannes/SST-sensor-placement-input/NSIDC/supmask.nc   | netcdf     | N/A              | mask                                    | N/A                      |
+
 
 ### Accessing Datasets via ArrayLake
 
