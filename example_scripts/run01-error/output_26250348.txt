@@ -1,0 +1,10 @@
+DataProcessor with normalisation params:
+{'coords': {'time': {'name': 'time'},
+            'x1': {'map': None, 'name': 'lat'},
+            'x2': {'map': None, 'name': 'lon'}}}
+dim_yc inferred from TaskLoader: (1, 3, 1)
+dim_yt inferred from TaskLoader: 1
+dim_aux_t inferred from TaskLoader: 0
+internal_density inferred from TaskLoader: 1180
+encoder_scales inferred from TaskLoader: [np.float32(0.0004237288), np.float32(0.0009355429), np.float32(0.0004237288)]
+decoder_scale inferred from TaskLoader: 0.000847457627118644
