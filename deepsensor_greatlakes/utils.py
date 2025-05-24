@@ -65,3 +65,31 @@ def generate_random_coordinates(mask_da, N, data_processor=None):
         return normalized_coords_df.index.to_frame(index=False).values.T
     else:
         return np.vstack((latitudes, longitudes))
+
+def apply_mask_to_prediction(prediction_ds, lakemask_ds):
+    """
+    Applies a lake mask to a DeepSensor prediction Dataset.
+    Sets values to NaN where the mask is 0 (land).
+
+    Parameters:
+    -----------
+    prediction_ds : xarray.Dataset
+        The prediction Dataset from DeepSensor (e.g., containing 'mean' and 'std' data variables).
+    lakemask_ds : xarray.Dataset
+        The dataset containing the 'mask' DataArray (1 for water, 0 for land).
+
+    Returns:
+    --------
+    xarray.Dataset
+        The prediction Dataset with land values masked out (set to NaN).
+    """
+    if 'mask' not in lakemask_ds:
+        raise ValueError("lakemask_ds must contain a 'mask' data variable.")
+
+    masked_prediction_ds = prediction_ds.copy(deep=True) # Work on a copy to avoid modifying original
+    mask_da = lakemask_ds['mask']
+
+    for var in masked_prediction_ds.data_vars:
+        masked_prediction_ds[var] = masked_prediction_ds[var].where(mask_da == 1)
+
+    return masked_prediction_ds
