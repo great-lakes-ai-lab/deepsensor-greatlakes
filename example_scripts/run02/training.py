@@ -70,7 +70,7 @@ set_gpu_default_device()
 data_range = ("2009-01-01", "2022-12-31")
 train_range = ("2009-01-01", "2021-12-31")
 val_range = ("2022-01-01", "2022-12-31")
-date_subsample_factor = 5
+date_subsample_factor = 10
 
 # Just two years for demo purposes
 #data_range = ("2009-01-01", "2010-12-31")
