@@ -1,0 +1,47 @@
+Environment setup complete.
+Single prediction configured for date: 2022-07-15 with 100 context points.
+Time series prediction configured for Lat: 47.5, Lon: -87.5 from 2022-01-01 to 2022-12-31.
+Type of glsea_raw after loading and initial processing: <class 'xarray.core.dataset.Dataset'>
+GLSEA dataset has 10221 unique available dates within its loaded time range.
+Raw data loaded and preprocessed.
+DataProcessor initialized: DataProcessor with normalisation params:
+{'bathymetry': {'method': 'min_max',
+                'params': {'max': 316.62872313037894,
+                           'min': 9.999999999999998}},
+ 'coords': {'time': {'name': 'time'},
+            'x1': {'map': (38.8749871947229, 55.4132976408956), 'name': 'lat'},
+            'x2': {'map': (-92.4199507342304, -75.8816402880577),
+                   'name': 'lon'}},
+ 'mask': {'method': 'min_max', 'params': {'max': 1.0, 'min': 0.0}},
+ 'sst': {'method': 'mean_std',
+         'params': {'mean': 7.873531818389893, 'std': 6.944828510284424}}}
+TaskLoader initialized: TaskLoader(3 context sets, 1 target sets)
+Context variable IDs: (('sst',), ('bathymetry', 'cos_D', 'sin_D'), ('mask',))
+Target variable IDs: (('sst',),)
+Attempting to instantiate ConvNP model (randomly initialized initially):
+Architectural config for construct_neural_process (passed as **kwargs): {'dim_x': 2, 'dim_yc': [1, 3, 1], 'dim_yt': 1, 'dim_aux_t': 0, 'dim_lv': 0, 'conv_arch': 'unet', 'unet_channels': [64, 64, 64, 64], 'unet_resize_convs': True, 'unet_resize_conv_interp_method': 'bilinear', 'aux_t_mlp_layers': None, 'likelihood': 'het', 'unet_kernels': 5, 'internal_density': 1180, 'encoder_scales': [0.0004237288, 0.0009355429, 0.0004237288], 'encoder_scales_learnable': False, 'decoder_scale': 0.000847457627118644, 'decoder_scale_learnable': False, 'num_basis_functions': 64, 'epsilon': 0.01}
+Model loaded successfully!
+
+--- Starting Full-Map Prediction for 2022-07-15 ---
+Prediction task created for 2022-07-15.
+DEBUG: Type of prediction_task['X_c']: <class 'list'>
+DEBUG: Type of prediction_task['X_c'][0]: <class 'numpy.ndarray'>
+Number of context points: 2
+DEBUG: Type of prediction_task['X_t']: <class 'list'>
+DEBUG: Type of prediction_task['X_t'][0]: <class 'tuple'>
+Number of target points: 2
+Full-map prediction completed.
+Prediction({'sst': ('mean', 'std')}), mode=on-grid
+Saved: prediction_plots/mean_sst_prediction_2022-07-15.png
+Saved: prediction_plots/std_sst_prediction_2022-07-15.png
+Full-map prediction section completed.
+
+--- Starting Time Series Prediction ---
+Time series will be predicted for 365 dates out of 365 available in GLSEA.
+Saved: prediction_plots/time_series_sst_prediction_LSuperior_47.5_-87.5.csv
+Saved: prediction_plots/time_series_sst_prediction_LSuperior_47.5_-87.5.png
+Time series prediction completed.
+
+--- Reproducibility Information ---
+Python Executable: /home/dannes/ds_env_gpu/bin/python3
+Python Version: 3.10.9 (main, Mar  1 2023, 18:23:06) [GCC 11.2.0]

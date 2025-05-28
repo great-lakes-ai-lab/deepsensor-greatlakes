@@ -1,0 +1,15 @@
+--- Checking for truly missing dates in GLSEA data from 1995-01-01 to 2022-12-31 ---
+Total expected unique days in the full data range: 10227
+Total actual unique days found in glsea_raw dataset: 10221
+
+--- Result: Found 6 truly MISSING dates in GLSEA data! ---
+These dates are expected in the range but are NOT present in glsea_raw:
+  - 2012-08-21
+  - 2012-08-22
+  - 2021-07-31
+  - 2021-08-31
+  - 2021-09-30
+  - 2021-10-31
+
+This confirms that the `KeyError` is indeed due to actual data gaps for these specific dates.
+The pre-filtering strategy in `gen_tasks` (to only use dates present in `glsea_raw`) is necessary to handle these gaps gracefully.
