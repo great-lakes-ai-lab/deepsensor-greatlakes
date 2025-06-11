@@ -133,6 +133,8 @@ virtual environment in parentheses (see image below for example).
 
 If you are working with an existing Jupyter notebook, you can select `Kernel -> change kernel` from the task bar and select the kernel that you wish to use, corresponding to the virtual environment in which you want to work. 
 
+This is an arbitrary line that has been added for a demo. You can delete this. 
+
 ## GPU Environment Setup with Pytorch
 
 ### Setting Up for the First Time
