@@ -21,8 +21,8 @@
     "sst": {
         "method": "mean_std",
         "params": {
-            "mean": 7.873531818389893,
-            "std": 6.944828510284424
+            "mean": 9.478456497192383,
+            "std": 7.468719959259033
         }
     },
     "bathymetry": {
@@ -33,6 +33,13 @@
         }
     },
     "mask": {
+        "method": "min_max",
+        "params": {
+            "min": 0.0,
+            "max": 1.0
+        }
+    },
+    "ice_concentration": {
         "method": "min_max",
         "params": {
             "min": 0.0,
