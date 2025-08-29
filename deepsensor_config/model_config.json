@@ -1,0 +1,34 @@
+{
+    "dim_x": 2,
+    "dim_yc": [
+        1,
+        1,
+        4
+    ],
+    "dim_yt": 1,
+    "dim_aux_t": 0,
+    "dim_lv": 0,
+    "conv_arch": "unet",
+    "unet_channels": [
+        64,
+        64,
+        64,
+        64
+    ],
+    "unet_resize_convs": true,
+    "unet_resize_conv_interp_method": "bilinear",
+    "aux_t_mlp_layers": null,
+    "likelihood": "het",
+    "unet_kernels": 5,
+    "internal_density": 1540,
+    "encoder_scales": [
+        "0.0004237288",
+        "0.0004237288",
+        "0.00032467532"
+    ],
+    "encoder_scales_learnable": false,
+    "decoder_scale": 0.0006493506493506494,
+    "decoder_scale_learnable": false,
+    "num_basis_functions": 64,
+    "epsilon": 0.01
+}
