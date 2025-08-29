@@ -1,0 +1,13 @@
+{
+    "id": "a830c28c-255d-42c3-a62f-bcb7d1a4a99a",
+    "calculation_date": "2025-08-29 13:04:10.593335",
+    "dataset_vars": [
+        "crs",
+        "sst"
+    ],
+    "dataset_dims": {
+        "time": 10221,
+        "lat": 838,
+        "lon": 1181
+    }
+}

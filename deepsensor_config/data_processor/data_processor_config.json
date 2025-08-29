@@ -18,25 +18,11 @@
             ]
         }
     },
-    "sst": {
+    "sst_anom": {
         "method": "mean_std",
         "params": {
-            "mean": 9.478456497192383,
-            "std": 7.468719959259033
-        }
-    },
-    "bathymetry": {
-        "method": "min_max",
-        "params": {
-            "min": 9.999999999999998,
-            "max": 316.62872313037894
-        }
-    },
-    "mask": {
-        "method": "min_max",
-        "params": {
-            "min": 0.0,
-            "max": 1.0
+            "mean": 3.6779758829652565e-06,
+            "std": 2.022264242172241
         }
     },
     "ice_concentration": {
