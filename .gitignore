@@ -3,8 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Don't track NetCDF files
-*.nc
+# Don't track NetCDF or Zarr files
+*.nc 
+*.zarr/
 
 # C extensions
 *.so
