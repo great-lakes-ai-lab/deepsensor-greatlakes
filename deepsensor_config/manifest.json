@@ -1,0 +1,13 @@
+{
+    "created": "2025-08-29 14:28:07.561161",
+    "seasonal_cycle": {
+        "glsea": {
+            "id": "e848d83f-9403-4cd2-8024-0a196bead30a",
+            "cycle_path": "/home/dannes/deepsensor-greatlakes/deepsensor_config/seasonal_cycles/e848d83f-9403-4cd2-8024-0a196bead30a_seasonal_cycle.nc",
+            "metadata_path": "/home/dannes/deepsensor-greatlakes/deepsensor_config/seasonal_cycles/e848d83f-9403-4cd2-8024-0a196bead30a_metadata.json"
+        }
+    },
+    "data_processor": {
+        "config_path": "/home/dannes/deepsensor-greatlakes/deepsensor_config/data_processor/data_processor_config.json"
+    }
+}
