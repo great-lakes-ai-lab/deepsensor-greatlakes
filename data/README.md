@@ -39,19 +39,19 @@ data/
 
 ### Datasets on Google Cloud Platform (GCP)
 
-| **Dataset Name**       | **Description**                                              | **Data Path**                                                       | **Format** | **Consolidated** | **Variables**                            | **Time Range**           |
-|------------------------|--------------------------------------------------------------|--------------------------------------------------------------------|------------|------------------|------------------------------------------|--------------------------|
-| **glos surface temps**              | Great Lakes Observing System (GLOS) surface temps      | gs://great-lakes-osd/glos_obs/gl_temp_data_cleaned.nc                        | NetCDF       | No               | sst, lat, lon, time                 | 2012 to 2025 |
-| **glsea**              | Great Lakes Surface Environmental Analysis data (GLSEA)      | gs://great-lakes-osd/zarr_experimental/glsea                        | zarr       | No               | sst, lat, lon, time, crs                 | 1995-01-01 to 2023-12-31 |
-| **glsea3**             | Great Lakes Surface Environmental Analysis data (GLSEA3)     | gs://great-lakes-osd/zarr_experimental/glsea3                       | zarr       | No               | sst, lat, lon, time, crs                 | 2006-01-01 to 2023-12-31 |
-| **bathymetry**         | Interpolated bathymetry data for the Great Lakes             | gs://great-lakes-osd/context/interpolated_bathymetry.nc             | netcdf     | N/A              | N/A                                      | N/A                      |
-| **lakemask**           | Lake mask data for the Great Lakes                          | gs://great-lakes-osd/context/lakemask.nc                            | netcdf     | N/A              | N/A                                      | N/A                      |
-| **ice_concentration**  | Ice concentration data for the Great Lakes                   | gs://great-lakes-osd/ice_concentration.zarr                        | zarr       | Yes              | ice_concentration, lat, lon, time        | 1972-01-01 to 2023-05-21 |
-| **ermask**                | Mask for Lake Erie                            | gs://great-lakes-osd/context/ermask.nc                              | netcdf     | N/A              | mask                                    | N/A                      |
-| **hurmask**               | Mask for Lake Huron             | gs://great-lakes-osd/context/hurmask.nc                             | netcdf     | N/A              | mask                                    | N/A                      |                    |                   |
-| **michmask**              | Mask for Lake Michigan                              | gs://great-lakes-osd/context/michmask.nc                            | netcdf     | N/A              | mask                                    | N/A                      |
-| **ontmask**               | Mask for Lake Ontario                               | gs://great-lakes-osd/context/ontmask.nc                             | netcdf     | N/A              | mask                                    | N/A                      |
-| **supmask**               | Mask for Lake Superior                              | gs://great-lakes-osd/context/supmask.nc                             | netcdf     | N/A              | mask                                    | N/A                      |
+| **Dataset Name** | **Description** | **Data Path** | **Format** | **Consolidated** | **Variables** | **Time Range** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **glos surface temps** | Great Lakes Observing System (GLOS) surface temps | `gs://great-lakes-osd-central/glos_obs/gl_temp_data_cleaned.nc` | NetCDF | No | sst, lat, lon, time | 2012 to 2025 |
+| **glsea** | Great Lakes Surface Environmental Analysis data (GLSEA) | `gs://great-lakes-osd-central/GLSEA_combined.zarr/` | Zarr | Yes | sst, lat, lon, time, crs | 1995-01-01 to 2023-12-31 |
+| **glsea3** | Great Lakes Surface Environmental Analysis data (GLSEA3) | `gs://great-lakes-osd-central/GLSEA3_combined.zarr/` | Zarr | Yes | sst, lat, lon, time, crs | 2006-01-01 to 2023-12-31 |
+| **bathymetry** | Interpolated bathymetry data for the Great Lakes | `gs://great-lakes-osd-central/context/interpolated_bathymetry.nc` | NetCDF | N/A | N/A | N/A |
+| **lakemask** | Lake mask data for the Great Lakes | `gs://great-lakes-osd-central/context/lakemask.nc` | NetCDF | N/A | N/A | N/A |
+| **ice_concentration** | Ice concentration data for the Great Lakes | `gs://great-lakes-osd-central/ice/ice_concentration_glsea3_838x1181_1995-2022.zarr/` | Zarr | Yes | ice_concentration, lat, lon, time | 1995 to 2022 |
+| **ermask** | Mask for Lake Erie | `gs://great-lakes-osd-central/context/ermask.nc` | NetCDF | N/A | mask | N/A |
+| **hurmask** | Mask for Lake Huron | `gs://great-lakes-osd-central/context/hurmask.nc` | NetCDF | N/A | mask | N/A |
+| **michmask** | Mask for Lake Michigan | `gs://great-lakes-osd-central/context/michmask.nc` | NetCDF | N/A | mask | N/A |
+| **ontmask** | Mask for Lake Ontario | `gs://great-lakes-osd-central/context/ontmask.nc` | NetCDF | N/A | mask | N/A |
+| **supmask** | Mask for Lake Superior | `gs://great-lakes-osd-central/context/supmask.nc` | NetCDF | N/A | mask | N/A |               |
 
 
 ### Datasets on U-M HPC Turbo Research Storage
